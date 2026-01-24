@@ -11,7 +11,9 @@ NAME	= codexion
 SRC_DIR		= src
 INC_DIR		= includes
 
-SRCS = $(SRC_DIR)/main.c
+SRCS = $(SRC_DIR)/main.c \
+	   $(SRC_DIR)/parse.c \
+	
 
 OBJS = $(SRCS:.c=.o)
 INCLUDES = -I$(INC_DIR)
