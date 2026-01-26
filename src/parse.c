@@ -35,7 +35,7 @@ long	ft_strtol(const char *str)
 	return (result * sign);
 }
 
-bool	validate_arguments(char const *argv[])
+bool	validate_argvs(char const *argv[])
 {
 	int	i;
 
@@ -52,7 +52,7 @@ bool	validate_arguments(char const *argv[])
 		return (false);
 }
 
-t_argvs	parse_arguments(char const **argv)
+t_argvs	init_argvs(char const **argv)
 {
 	t_argvs	argvs;
 
