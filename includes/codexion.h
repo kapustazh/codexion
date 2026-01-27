@@ -18,7 +18,6 @@
 
 # include <limits.h>
 # include <pthread.h>
-# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -36,8 +35,10 @@ typedef struct s_argvs
 	char const *scheduler;
 } t_argvs;
 
+
 long	ft_strtol(const char *str);
-bool	validate_argvs(char const *argv[]);
-t_argvs	init_argvs(char const *argv[]);
+int	validate_argvs(int argc, char const *argv[]);
+t_argvs	*init_argvs(t_argvs *args, char const *argv[]);
+
 
 #endif // CODEXION_H

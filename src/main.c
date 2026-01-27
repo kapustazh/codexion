@@ -15,22 +15,13 @@
 
 #include "../includes/codexion.h"
 
-
 int	main(int argc, char const *argv[])
 {
-	t_argvs args;
+	t_argvs	args;
 
-	if (argc != 9)
-	{
-		printf("Error: Invalid number of arguments");
-		return (0);
-	}
-	if (!validate_argvs(argv))
-	{
-		printf("Invalid arguments, try again!");
-		return (0);
-	}
-	args = init_argvs(argv);
+	if (!validate_argvs(argc, argv))
+		return (1);
+	init_argvs(&args, argv);
 	printf("%d", args.dongle_cooldown);
 	return (0);
 }
