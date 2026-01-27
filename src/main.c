@@ -17,11 +17,11 @@
 
 int	main(int argc, char const *argv[])
 {
-	t_argvs	args;
+	t_argvs	input;
 
 	if (!validate_argvs(argc, argv))
 		return (1);
-	init_argvs(&args, argv);
-	printf("%d", args.dongle_cooldown);
+	init_argvs(&input, argv);
+	run(&input);
 	return (0);
 }

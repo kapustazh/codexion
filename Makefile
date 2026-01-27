@@ -13,6 +13,9 @@ INC_DIR		= includes
 
 SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/parse.c \
+	   $(SRC_DIR)/manager.c \
+	   $(SRC_DIR)/threads.c \
+	   $(SRC_DIR)/routine.c
 	
 
 OBJS = $(SRCS:.c=.o)

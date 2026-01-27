@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 20:04:57 by mnestere          #+#    #+#             */
-/*   Updated: 2026/01/27 16:16:19 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:27:31 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ int	validate_argvs(int argc, char const *argv[])
 	}
 }
 
-t_argvs	*init_argvs(t_argvs *argvs, char const **argv)
+t_argvs	*init_argvs(t_argvs *input, char const **argv)
 {
-	argvs->number_of_coders = atoi(argv[1]);
-	argvs->time_to_burnout = atoi(argv[2]);
-	argvs->time_to_compile = atoi(argv[3]);
-	argvs->time_to_debug = atoi(argv[4]);
-	argvs->time_to_refactor = atoi(argv[5]);
-	argvs->number_of_compiles_required = atoi(argv[6]);
-	argvs->dongle_cooldown = atoi(argv[7]);
-	argvs->scheduler = argv[8];
-	return (argvs);
+	input->number_of_coders = atoi(argv[1]);
+	input->time_to_burnout = atoi(argv[2]);
+	input->time_to_compile = atoi(argv[3]);
+	input->time_to_debug = atoi(argv[4]);
+	input->time_to_refactor = atoi(argv[5]);
+	input->number_of_compiles_required = atoi(argv[6]);
+	input->dongle_cooldown = atoi(argv[7]);
+	input->scheduler = argv[8];
+	return (input);
 }
