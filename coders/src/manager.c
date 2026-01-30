@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manager.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:24:40 by mnestere          #+#    #+#             */
-/*   Updated: 2026/01/27 20:58:52 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/01/30 19:36:39 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	run(t_argvs *input)
 {
-	int coders_size;
-	t_coder *coders;
+	int		coders_size;
+	t_coder	*coders;
 
 	coders = malloc_coders(&coders_size, input);
 	if (!coders)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 20:04:57 by mnestere          #+#    #+#             */
-/*   Updated: 2026/01/27 16:27:31 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/01/30 19:36:08 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	validate_argvs(int argc, char const *argv[])
 	i = 1;
 	while (*argv[i] && i < 8)
 	{
-		if (ft_strtol(argv[i]) >= INT_MAX || ft_strtol(argv[i]) <= 0)
+		if (ft_strtol(argv[i]) > INT_MAX || ft_strtol(argv[i]) <= 0)
 		{
 			printf("Invalid arguments, try again!");
 			return (0);

@@ -23,9 +23,5 @@ int	main(const int argc, char const *argv[])
 		return (1);
 	init_argvs(&input, argv);
 	run(&input);
-
 	return (0);
-
 }
-
-

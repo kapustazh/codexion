@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:29:38 by mnestere          #+#    #+#             */
-/*   Updated: 2026/01/30 15:02:04 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/01/30 19:36:48 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_coder	*malloc_coders(int *coders_size, t_argvs *input)
 	}
 	return (coders);
 }
+
 void	create_thread(t_coder *coders, int *number_of_coders)
 {
 	int	i;
