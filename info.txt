@@ -1,0 +1,57 @@
+### NOTES ###
+
+number_of_coders = number_of_dongles
+
+if time_to_burnout < time when coder started compiling -> coder burns out
+
+time_to_compile -> takes time and requires 2 dongles for the coder
+
+time_to_debug -> time_to_debug
+
+time_to_refactor -> after it comes attempt to time_to_compile
+
+number_of_compiles_required -> counter that each coders suppose to acomplish
+
+dongle_cooldown -> requires coldown after usage
+
+scheduler:
+
+fifo -> first came = first got the dongle_cooldown
+
+edf -> each of coders suppose to have earliest deadline:
+
+--- new field to the struct ---
+
+earliest_deadline = last_compile_start + time_to_burnout
+
+each_coder.id from 1 to number_of_coders
+
+list of coders = 
+
+coder.id(last) <-> coder.id(1) <-> coder.id(n - 1) <-> coder.id(n) <-> coder.id(n + 1)
+
+### Timing consideration: To reduce hardware impact on performance ###
+measurements, consider using CPU usage time instead of real-time
+clock when feasible.
+
+###############################################################################
+
+
+each coder = thread
+
+coder dongle coder dongle coder
+
+coder dongle
+
+each dongle is a flag with mutex to lock it for only one coder from the side
+
+pthread_cond_t suppose to help with it
+
+dongle_cooldown = sleep()???
+
+if 2 coders -> 1 dongle = scheduler gives the output
+
+coders must not die for fun
+
+### monitor thread ###
+
