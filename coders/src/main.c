@@ -15,7 +15,7 @@
 
 #include "../includes/codexion.h"
 
-int	main(int argc, char const *argv[])
+int	main(const int argc, char const *argv[])
 {
 	t_argvs	input;
 
@@ -23,5 +23,9 @@ int	main(int argc, char const *argv[])
 		return (1);
 	init_argvs(&input, argv);
 	run(&input);
+
 	return (0);
+
 }
+
+
