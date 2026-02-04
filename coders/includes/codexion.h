@@ -33,6 +33,7 @@ typedef struct s_argvs
 	int				number_of_compiles_required;
 	int				dongle_cooldown;
 	char const		*scheduler;
+	pthread_mutex_t	print_mutex;
 }					t_argvs;
 
 typedef struct s_coder
@@ -40,14 +41,15 @@ typedef struct s_coder
 	int				id;
 	pthread_t		thread;
 	t_argvs			*input;
-	pthread_mutex_t	lock;
+	pthread_mutex_t	left_dongle;
+	pthread_mutex_t	*right_dongle;
 }					t_coder;
 
 void				run(t_argvs *input);
 long				ft_strtol(const char *str);
 int					validate_argvs(int argc, char const *argv[]);
 t_argvs				*init_argvs(t_argvs *input, char const *argv[]);
-void				create_thread(t_coder *coders, int *number_of_coders);
+void				init_threads(t_coder *coders, int *number_of_coders);
 void				*do_routine(void *arg);
 void				join_treads(t_coder *coders, int *number_of_coders);
 void				free_mutex(t_coder *coders, int *number_of_coders);

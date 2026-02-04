@@ -20,8 +20,9 @@ void	run(t_argvs *input)
 	coders = malloc_coders(&coders_size, input);
 	if (!coders)
 		return ;
-	create_thread(coders, &coders_size);
+	init_threads(coders, &coders_size);
 	join_treads(coders, &coders_size);
 	free_mutex(coders, &coders_size);
+	pthread_mutex_destroy(&input->print_mutex);
 	free(coders);
 }
