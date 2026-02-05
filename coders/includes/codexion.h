@@ -51,7 +51,5 @@ int					validate_argvs(int argc, char const *argv[]);
 t_argvs				*init_argvs(t_argvs *input, char const *argv[]);
 void				init_threads(t_coder *coders, int *number_of_coders);
 void				*do_routine(void *arg);
-void				join_treads(t_coder *coders, int *number_of_coders);
-void				free_mutex(t_coder *coders, int *number_of_coders);
 t_coder				*malloc_coders(int *coders_size, t_argvs *input);
 #endif // CODEXION_H

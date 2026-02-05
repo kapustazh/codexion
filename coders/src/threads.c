@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnestere <mnestere@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:29:38 by mnestere          #+#    #+#             */
-/*   Updated: 2026/01/30 19:36:48 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/02/05 20:22:13 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/codexion.h"
 
-t_coder	*malloc_coders(int *coders_size, t_argvs *input)
-{
-	t_coder	*coders;
-	int		i;
-
-	i = 0;
-	*coders_size = input->number_of_coders;
-	coders = malloc(sizeof(t_coder) * *coders_size);
-	if (!coders)
-		return (NULL);
-	i = 0;
-	while (i < *coders_size)
-	{
-		coders[i].input = input;
-		i++;
-	}
-	return (coders);
-}
-
-void	init_threads(t_coder *coders, int *number_of_coders)
+static void	init_mutex(t_coder *coders, int *number_of_coders)
 {
 	int	i;
 
@@ -51,6 +32,12 @@ void	init_threads(t_coder *coders, int *number_of_coders)
 			coders[i].right_dongle = &coders[i - 1].left_dongle;
 		i++;
 	}
+}
+
+static void	create_threads(t_coder *coders, int *number_of_coders)
+{
+	int	i;
+
 	i = 0;
 	while (i < *number_of_coders)
 	{
@@ -59,7 +46,7 @@ void	init_threads(t_coder *coders, int *number_of_coders)
 	}
 }
 
-void	join_treads(t_coder *coders, int *number_of_coders)
+static void	join_treads(t_coder *coders, int *number_of_coders)
 {
 	int	i;
 
@@ -71,7 +58,7 @@ void	join_treads(t_coder *coders, int *number_of_coders)
 	}
 }
 
-void	free_mutex(t_coder *coders, int *number_of_coders)
+static void	free_mutex(t_coder *coders, int *number_of_coders)
 {
 	int	i;
 
@@ -81,4 +68,12 @@ void	free_mutex(t_coder *coders, int *number_of_coders)
 		pthread_mutex_destroy(&coders[i].left_dongle);
 		i++;
 	}
+}
+
+void	init_threads(t_coder *coders, int *number_of_coders)
+{
+	init_mutex(coders, number_of_coders);
+	create_threads(coders, number_of_coders);
+	join_treads(coders, number_of_coders);
+	free_mutex(coders, number_of_coders);
 }
