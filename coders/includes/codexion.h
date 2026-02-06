@@ -47,6 +47,19 @@ typedef struct s_coder
 	pthread_mutex_t	*right_dongle;
 }					t_coder;
 
+typedef struct s_node
+{
+	int				coder_id;
+	long long		priority_value;
+}					t_node;
+
+typedef struct s_heap
+{
+	t_node			*array;
+	int				size;
+	int				capacity;
+}					t_heap;
+
 void				run(t_argvs *input);
 long				ft_strtol(const char *str);
 int					validate_argvs(int argc, char const *argv[]);
@@ -56,5 +69,12 @@ void				*do_routine(void *arg);
 t_coder				*malloc_coders(int *coders_size, t_argvs *input);
 long				get_elapsed_time(void);
 long				get_current_time(t_argvs *input);
+void				swap_nodes(t_node *a, t_node *b);
+
+// heap funcs
+t_heap				*init_heap(int max_size);
+int					heap_peek(t_heap *heap);
+void				heap_push(t_heap *heap, int id, long long prio);
+int					heap_pop(t_heap *heap);
 
 #endif // CODEXION_H
