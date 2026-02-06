@@ -30,11 +30,14 @@ void	*do_routine(void *arg)
 	this_coder = (t_coder *)arg;
 	pthread_mutex_lock(&this_coder->input->print_mutex);
 	pthread_mutex_lock(this_coder->right_dongle);
-	print_message(DONGLE, this_coder);
-	print_message(COMPILE, this_coder);
-	print_message(DEBUG, this_coder);
-	print_message(REFACTOR, this_coder);
-	print_message(BURNOUT, this_coder);
+	while (1)
+	{
+		print_message(DONGLE, this_coder);
+		print_message(COMPILE, this_coder);
+		print_message(DEBUG, this_coder);
+		print_message(REFACTOR, this_coder);
+		print_message(BURNOUT, this_coder);
+	}
 	pthread_mutex_unlock(this_coder->right_dongle);
 	pthread_mutex_unlock(&this_coder->input->print_mutex);
 	return (NULL);

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coders.c                                           :+:      :+:    :+:   */
+/*   heap_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnestere <mnestere@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/05 20:20:00 by mnestere          #+#    #+#             */
-/*   Updated: 2026/02/06 20:44:44 by mnestere         ###   ########.fr       */
+/*   Created: 2026/02/06 22:11:59 by mnestere          #+#    #+#             */
+/*   Updated: 2026/02/06 22:15:25 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/codexion.h"
 
-t_coder	*malloc_coders(int *coders_size, t_argvs *input)
+void	swap_nodes(t_node *a, t_node *b)
 {
-	t_coder	*coders;
-	int		i;
+	t_node	temp;
 
-	i = 0;
-	*coders_size = input->number_of_coders;
-	coders = malloc(sizeof(t_coder) * *coders_size);
-	if (!coders)
-		return (NULL);
-	i = 0;
-	while (i < *coders_size)
-	{
-		coders[i].input = input;
-		i++;
-	}
-	return (coders);
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
