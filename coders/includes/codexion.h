@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/time.h>
 # include <unistd.h>
 
 typedef struct s_argvs
@@ -32,6 +33,7 @@ typedef struct s_argvs
 	int				time_to_refactor;
 	int				number_of_compiles_required;
 	int				dongle_cooldown;
+	long			start_time;
 	char const		*scheduler;
 	pthread_mutex_t	print_mutex;
 }					t_argvs;
@@ -52,4 +54,7 @@ t_argvs				*init_argvs(t_argvs *input, char const *argv[]);
 void				init_threads(t_coder *coders, int *number_of_coders);
 void				*do_routine(void *arg);
 t_coder				*malloc_coders(int *coders_size, t_argvs *input);
+long				get_elapsed_time(void);
+long				get_current_time(t_argvs *input);
+
 #endif // CODEXION_H

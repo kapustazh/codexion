@@ -16,7 +16,8 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/manager.c \
 	   $(SRC_DIR)/threads.c \
 	   $(SRC_DIR)/coders.c \
-	   $(SRC_DIR)/routine.c
+	   $(SRC_DIR)/routine.c \
+	   $(SRC_DIR)/timer.c
 	
 
 OBJS = $(SRCS:.c=.o)

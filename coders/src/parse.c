@@ -73,6 +73,7 @@ t_argvs	*init_argvs(t_argvs *input, char const **argv)
 	input->number_of_compiles_required = atoi(argv[6]);
 	input->dongle_cooldown = atoi(argv[7]);
 	input->scheduler = argv[8];
+	input->start_time = get_elapsed_time();
 	pthread_mutex_init(&input->print_mutex, NULL);
 	return (input);
 }

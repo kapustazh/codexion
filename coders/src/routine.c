@@ -12,6 +12,17 @@
 
 #include "../includes/codexion.h"
 
+#define DONGLE "has taken a dongle"
+#define COMPILE "compiling"
+#define DEBUG "debugging"
+#define REFACTOR "refactoring"
+#define BURNOUT "burned out"
+
+static void	print_message(char *msg, t_coder *coder)
+{
+	printf("%ld %i %s\n", get_current_time(coder->input), coder->id, msg);
+}
+
 void	*do_routine(void *arg)
 {
 	t_coder	*this_coder;
@@ -19,11 +30,11 @@ void	*do_routine(void *arg)
 	this_coder = (t_coder *)arg;
 	pthread_mutex_lock(&this_coder->input->print_mutex);
 	pthread_mutex_lock(this_coder->right_dongle);
-	printf("%d has taken a dongle\n", this_coder->id);
-	printf("%d is compiling\n", this_coder->id);
-	printf("%d is debugging\n", this_coder->id);
-	printf("%d is refactoring\n", this_coder->id);
-	printf("%d burned out\n", this_coder->id);
+	print_message(DONGLE, this_coder);
+	print_message(COMPILE, this_coder);
+	print_message(DEBUG, this_coder);
+	print_message(REFACTOR, this_coder);
+	print_message(BURNOUT, this_coder);
 	pthread_mutex_unlock(this_coder->right_dongle);
 	pthread_mutex_unlock(&this_coder->input->print_mutex);
 	return (NULL);
