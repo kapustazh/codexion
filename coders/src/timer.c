@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 14:14:58 by mnestere          #+#    #+#             */
-/*   Updated: 2026/02/06 14:38:21 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/02/08 01:51:33 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ long	get_elapsed_time(void)
 {
 	struct timeval	time;
 
-	gettimeofday(&time, NULL);
+	if (gettimeofday(&time, NULL))
+		return (-1);
 	return ((long long)time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 

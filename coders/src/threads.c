@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:29:38 by mnestere          #+#    #+#             */
-/*   Updated: 2026/02/05 20:22:13 by mnestere         ###   ########.fr       */
+/*   Updated: 2026/02/08 01:53:14 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static void	create_threads(t_coder *coders, int *number_of_coders)
 	i = 0;
 	while (i < *number_of_coders)
 	{
-		pthread_create(&coders[i].thread, NULL, do_routine, &coders[i]);
+		if (pthread_create(&coders[i].thread, NULL, do_routine, &coders[i]))
+			exit(1);
 		i++;
 	}
 }
@@ -53,7 +54,8 @@ static void	join_treads(t_coder *coders, int *number_of_coders)
 	i = 0;
 	while (i < *number_of_coders)
 	{
-		pthread_join(coders[i].thread, NULL);
+		if (pthread_join(coders[i].thread, NULL))
+			exit(1);
 		i++;
 	}
 }

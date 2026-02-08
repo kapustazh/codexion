@@ -2,6 +2,18 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   codexion.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mnestere <mnestere@student.42heilbronn.d>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 01:07:34 by mnestere          #+#    #+#             */
+/*   Updated: 2026/02/08 03:17:48 by mnestere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   codexion.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+
 	+:+     */
 /*   By: mnestere <mnestere@student.42heilbronn.de> +#+  +:+
@@ -24,6 +36,20 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+// struct timeval {
+//     time_t      tv_sec;
+//     suseconds_t tv_usec;
+// };
+
+typedef enum e_coder_status
+{
+	COMPILING,
+	DEBUGGING,
+	REFACTORING,
+	BURNED_OUT,
+	ENOUGH
+} t_coder_status;
+
 typedef struct s_argvs
 {
 	int				number_of_coders;
@@ -36,17 +62,30 @@ typedef struct s_argvs
 	long			start_time;
 	char const		*scheduler;
 	pthread_mutex_t	print_mutex;
+//	pthread_t		monitor_thread;
 }					t_argvs;
 
 typedef struct s_coder
 {
 	int				id;
+	int				earliest_deadline;
 	pthread_t		thread;
 	t_argvs			*input;
-	pthread_mutex_t	left_dongle;
-	pthread_mutex_t	*right_dongle;
+	s_dongle		left_dongle;
+	s_dongle		*right_dongle;
+	int				times_compiled;
+	long long		last_compiled_time;
+	pthread_mutex_t	last_compiled_time_mutex;
+	pthread_mutex_t times_compiled_mutex;
 }					t_coder;
 
+typedef struct s_dongle
+{
+	pthread_mutex_t		dongle;
+	t_argvs				*input;
+}					t_dongle;
+
+// heap
 typedef struct s_node
 {
 	int				coder_id;

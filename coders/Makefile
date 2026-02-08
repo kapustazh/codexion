@@ -11,7 +11,7 @@ NAME	= codexion
 SRC_DIR		= src
 INC_DIR		= includes
 
-SRCS = $(SRC_DIR)/main.c \
+SRCS = $(SRC_DIR)/codexion.c \
 	   $(SRC_DIR)/parse.c \
 	   $(SRC_DIR)/manager.c \
 	   $(SRC_DIR)/threads.c \
